@@ -126,7 +126,7 @@ public class Main extends Application{
           	public void handle(ActionEvent arg) {  
     			ArrayList<String> names = new ArrayList<String>();
     			int n = entrys.size();
-    			for (int i=0;i<entrys.size();i++) 
+    			for (int i=0;i<n;i++) 
     			{
     				String s = entrys.get(i).getText();
     				names.add(entrys.get(i).getText());
@@ -139,6 +139,12 @@ public class Main extends Application{
 					{
 						error = true;
 						output = "ERROR: invalid entry";
+						labels.clear();
+						for (int i=0;i<n;i++) 
+						{
+							Label l = new Label();
+							labels.add(l);
+						}
 					}
 					else 
 					{

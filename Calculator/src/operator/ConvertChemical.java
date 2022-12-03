@@ -5,8 +5,10 @@ import java.util.*;
 
 public class ConvertChemical {
 
+
 	public static Chemical solve (String s) throws IOException
 	{
+		boolean valid = false;
 		Stack<Integer> st = new Stack<Integer>();
 		Chemical chemical = new Chemical();
 		st.push(1);
@@ -17,10 +19,10 @@ public class ConvertChemical {
 		for (int i=0;i<s.length();i++) 
 		{	
 			char now = s.charAt(i);
-			if (Character.isDigit(now))
+			if (Character.isDigit(now)&&i!=s.length()-1)
 			{
 				int power = 1;
-				while (Character.isDigit(now))
+				while (Character.isDigit(now)&&i!=s.length()-1)
 				{
 					count = ((int)now-(int)('0'))*power;
 					i++;
@@ -41,6 +43,7 @@ public class ConvertChemical {
 			}
 			else
 			{
+				valid = true;
 				String element = "";
 				element += now; 
 				while (!Character.isUpperCase(now))
@@ -57,6 +60,7 @@ public class ConvertChemical {
 				count = 1;
 			}
 		}
+		if (!valid) return null;
 		if (st.size()>1) return null;
 		return chemical;
 	}
